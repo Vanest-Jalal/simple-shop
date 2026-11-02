@@ -3,7 +3,7 @@ import { IoCartOutline } from "react-icons/io5";
 
 export default function ProductCard({ product }) {
   return (
-    <div>
+    <div className="bg-white rounded-xl shadow-md p-5 flex flex-col gap-2">
       <Link href={`/products/${product.id}`}>
         <img
           src={product.thumbnail}
