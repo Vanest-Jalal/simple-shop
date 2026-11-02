@@ -48,4 +48,7 @@ export const useCartStore = create((set) => ({
           : product,
       ),
     })),
+
+  // Tømmer hele indkøbskurven efter betaling
+  clearCart: () => set({ cart: [] }),
 }));
