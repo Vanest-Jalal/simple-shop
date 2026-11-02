@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { IoCartOutline } from "react-icons/io5";
 
 export default function ProductCard({ product }) {
   return (
@@ -12,6 +13,14 @@ export default function ProductCard({ product }) {
       </Link>
       <h3>{product.title}</h3>
       <p>${product.price}</p>
+
+      <button
+        type="button"
+        aria-label={`Tilføj ${product.title} til kurven`}
+        className="bg-blue text-white p-3 rounded-lg hover:opacity-80 transition-opacity"
+      >
+        <IoCartOutline size={32} />
+      </button>
     </div>
   );
 }
