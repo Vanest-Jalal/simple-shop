@@ -1,13 +1,12 @@
 
 import Link from "next/link";
-import { FaArrowLeft } from "react-icons/fa";
-import { FaTruck, FaBoxOpen, FaShieldAlt } from "react-icons/fa";
+import { FaArrowLeft, FaTruck, FaBoxOpen, FaBox } from "react-icons/fa";
 
 export default async function ProductDetails({ params }) {
   // Henter produktets ID fra URL'en
   const { id } = await params;
 
-  // Henter produktet fra DummyJSON API'et
+  // Henter det valgte produkt fra DummyJSON API'et
   const response = await fetch(`https://dummyjson.com/products/${id}`);
   const product = await response.json();
 
@@ -23,8 +22,8 @@ export default async function ProductDetails({ params }) {
         Tilbage til produkter
       </Link>
 
-      {/* Produktbillede og produktinformation ved siden af hinanden */}
-      <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-2">
+      {/* Produktbillede og produktinformation */}
+      <div className="mt-10 grid grid-cols-1 items-center gap-10 md:grid-cols-2">
 
         {/* Produktbillede */}
         <div className="rounded-lg bg-white p-8">
@@ -44,7 +43,7 @@ export default async function ProductDetails({ params }) {
           {/* Produktbeskrivelse */}
           <p className="mt-4">{product.description}</p>
 
-          {/* Produktprisen */}
+          {/* Produktpris */}
           <p className="mt-6">{product.price} $</p>
 
           {/* Læg i kurv knap */}
@@ -55,10 +54,37 @@ export default async function ProductDetails({ params }) {
             Læg i kurv
           </button>
 
+          {/* Information om levering, retur og indpakning */}
+          <div className="mt-10 flex flex-col gap-6 border-t border-foreground/20 pt-6 text-foreground">
+
+            {/* Hurtig levering */}
+            <div className="flex items-center gap-4">
+              <FaTruck className="shrink-0 text-2xl" />
+              <div>
+                <p className="font-semibold">Hurtig levering</p>
+                <p className="text-sm">
+                  Levering inden for 1-3 hverdage
+                </p>
+              </div>
+            </div>
+
+            {/* Returret */}
+            <div className="flex items-center gap-4">
+              <FaBoxOpen className="shrink-0 text-2xl" />
+              <div>
+                <p className="font-semibold">30 dages returret</p>
+                <p className="text-sm">
+                  Nem og fleksibel returnering
+                </p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </main>
   );
 }
+
 
 
