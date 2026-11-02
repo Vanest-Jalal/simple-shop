@@ -1,10 +1,14 @@
+
 import Link from "next/link";
-import { GiLipstick } from "react-icons/gi";
 
 export default function Logo() {
   return (
-    <Link href="/" aria-label="Gå til forsiden">
-      <GiLipstick size={32} />
+    // Klik på navnet for at komme til forsiden
+    <Link
+      href="/"
+      className="text-2xl font-semibold tracking-tight text-blue transition-colors hover:text-lightblue"
+    >
+      BeautyShop
     </Link>
   );
 }
