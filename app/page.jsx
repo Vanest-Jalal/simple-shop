@@ -7,8 +7,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background">
 
-      {/* Hero-sektion med billede som baggrund */}
-      <section className="relative flex min-h-[calc(100vh-80px)] items-center px-10 md:px-20">
+      <section className="relative -mt-20 flex min-h-screen items-center px-10 pt-20 md:px-20">
 
         {/* Hero billede, som fylder hele hero sektionen */}
         <Image
