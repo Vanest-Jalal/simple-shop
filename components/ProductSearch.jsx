@@ -12,6 +12,8 @@ export default function ProductSearch({ products }) {
 
   const filteredProducts = products.filter(
     (product) =>
+      product.category !== "furniture" &&
+      product.category !== "groceries" &&
       product.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (selectedCategory === "all" || product.category === selectedCategory),
   );
