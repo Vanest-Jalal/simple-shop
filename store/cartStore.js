@@ -29,4 +29,23 @@ export const useCartStore = create((set) => ({
         cart: [...state.cart, { ...product, quantity: 1 }],
       };
     }),
+
+  // Fjerner et produkt fra indkøbskurven
+  removeFromCart: (productId) =>
+    set((state) => ({
+      // Beholder alle produkter undtagen det valgte
+      cart: state.cart.filter(
+        (product) => product.id !== productId,
+      ),
+    })),
+
+  // Mindsker antallet af et produkt med 1, men aldrig under 1
+  decreaseQuantity: (productId) =>
+    set((state) => ({
+      cart: state.cart.map((product) =>
+        product.id === productId && product.quantity > 1
+          ? { ...product, quantity: product.quantity - 1 }
+          : product,
+      ),
+    })),
 }));
