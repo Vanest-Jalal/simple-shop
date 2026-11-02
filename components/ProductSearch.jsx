@@ -6,10 +6,14 @@ import ProductCard from "@/components/ProductCard";
 export default function ProductSearch({ products }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const categories = [...new Set(products.map((product) => product.category))];
+  const categories = [
+    ...new Set(products.map((product) => product.category)),
+  ].filter((category) => category !== "furniture" && category !== "groceries");
 
-  const filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  const filteredProducts = products.filter(
+    (product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (selectedCategory === "all" || product.category === selectedCategory),
   );
 
   return (
@@ -23,11 +27,24 @@ export default function ProductSearch({ products }) {
       />
 
       <div className="flex flex-wrap gap-3 my-6">
+        <button
+          onClick={() => setSelectedCategory("all")}
+          className={`px-4 py-2 rounded-full ${
+            selectedCategory === "all" ? "bg-blue text-white" : "bg-lightblue"
+          }`}
+        >
+          Alle
+        </button>
+
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className="px-4 py-2 rounded-full bg-lightblue"
+            className={`px-4 py-2 rounded-full hover:bg-blue hover:text-white transition-colors ${
+              selectedCategory === category
+                ? "bg-blue text-white"
+                : "bg-lightblue"
+            }`}
           >
             {category}
           </button>
