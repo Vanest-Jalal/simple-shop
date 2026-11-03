@@ -46,7 +46,7 @@ export default function Reviews() {
         </div>
 
         <p className="mt-6 text-center text-sm text-gray-500">
-          Eksempelanmeldelser til skoleprojektet
+          Vi sætter pris på alle anmeldelser og feedback.
         </p>
       </div>
     </section>
