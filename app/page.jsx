@@ -1,14 +1,12 @@
-
 import Link from "next/link";
 import Image from "next/image";
+import Reviews from "./components/Reviews";
 
 // Opretter vores forside
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
-
       <section className="relative -mt-20 flex min-h-screen items-center px-10 pt-20 md:px-20">
-
         {/* Hero billede, som fylder hele hero sektionen */}
         <Image
           src="/beautyhero.jpg"
@@ -21,7 +19,6 @@ export default function Home() {
 
         {/* Indholdet placeres foran billedet */}
         <div className="relative z-10">
-
           <h1>Find dine beauty essentials</h1>
 
           <p className="mt-4 max-w-sm">
@@ -37,10 +34,10 @@ export default function Home() {
           >
             shop nu
           </Link>
-
         </div>
       </section>
+
+      <Reviews />
     </main>
   );
 }
-
