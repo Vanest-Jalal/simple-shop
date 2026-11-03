@@ -20,7 +20,7 @@ export default function PaymentPage() {
   // Simulerer en betaling uden at trække penge
   function handlePayment() {
     alert(
-      "Tak for din bestilling! Din betaling er gennemført (demo).",
+      "Tak for din bestilling! Din betaling er gennemført.",
     );
 
     // Tømmer indkøbskurven efter betaling

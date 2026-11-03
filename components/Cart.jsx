@@ -86,7 +86,7 @@ export default function Cart({ onClose }) {
             <button
               type="button"
               onClick={() => removeFromCart(product.id)}
-              className="rounded-full bg-gray-200 px-4 py-2 text-sm font-semibold text-foreground hover:bg-gray-300"
+              className="mt-4 rounded-full bg-gray-200 px-4 py-2 text-sm font-semibold text-foreground hover:bg-gray-300"
               aria-label={`Slet ${product.title} fra kurven`}
             >
               Slet
