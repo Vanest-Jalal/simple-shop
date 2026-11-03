@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { FaArrowLeft, FaTruck, FaBoxOpen, FaBox } from "react-icons/fa";
+import { Suspense } from "react";
 import AddToCartButton from "@/components/AddToCartButton";
 
-export default async function ProductDetails({ params }) {
+async function ProductDetailsContent({ params }) {
   // Henter produktets ID fra URL'en
   const { id } = await params;
 
@@ -77,5 +78,13 @@ export default async function ProductDetails({ params }) {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function ProductDetails({ params }) {
+  return (
+    <Suspense fallback={<p className="p-10">Indlæser produkt...</p>}>
+      <ProductDetailsContent params={params} />
+    </Suspense>
   );
 }
