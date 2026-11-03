@@ -48,7 +48,7 @@ export default function ProductSearch({ products }) {
                 : "bg-lightblue"
             }`}
           >
-            {category}
+            {category === "fragrances" ? "Parfumer" : category}
           </button>
         ))}
       </div>
