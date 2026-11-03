@@ -13,23 +13,22 @@ export default function Footer() {
           {/* Logo og sociale medier */}
           <div>
 
-            {/* BeautyShop-logo */}
+            {/* BeautyShop logo */}
             <p className="!text-3xl !font-bold tracking-tight">
               BeautyShop
             </p>
 
-            {/* Følg os på og sociale medier */}
+            
             <div className="mt-5">
-
               {/* Tekst over ikonerne */}
-              <p className="mb-2 !text-base !font-normal text-white">
-                Følg os på
-              </p>
+             <p className="mb-2 !text-lg !font-semibold text-white">
+  Følg os på
+</p>
 
-              {/* Sociale medier - kun til pynt */}
+              {/* fake sociale medier ikoner */}
               <div className="flex items-center gap-3">
 
-                {/* Instagram */}
+                
                 <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10">
                   <FaInstagram size={21} />
                 </span>
@@ -48,7 +47,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Kundeservice */}
           <div>
             <h2 className="mb-3 !text-lg !font-semibold">
               Kundeservice
@@ -63,7 +61,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Information */}
           <div>
             <h2 className="mb-3 !text-lg !font-semibold">
               Information
@@ -95,7 +92,6 @@ export default function Footer() {
 
         </div>
 
-        {/* Copyright centreret nederst */}
         <p className="mt-16 text-center !text-sm text-white/50">
           © 2026 BeautyShop. Alle rettigheder forbeholdes.
         </p>
