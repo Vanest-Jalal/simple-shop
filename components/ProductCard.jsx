@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IoCartOutline } from "react-icons/io5";
+import AddToCartButton from "./AddToCartButton";
 
 export default function ProductCard({ product }) {
   return (
@@ -15,13 +15,7 @@ export default function ProductCard({ product }) {
 
       <div className="mt-auto flex flex-col items-start gap-3">
         <p className="font-bold">${product.price}</p>
-        <button
-          type="button"
-          aria-label={`Tilføj ${product.title} til kurven`}
-          className="bg-blue text-white w-14 h-14 rounded-lg flex items-center justify-center hover:opacity-80 transition-opacity"
-        >
-          <IoCartOutline size={28} />
-        </button>
+        <AddToCartButton product={product} />
       </div>
     </div>
   );
