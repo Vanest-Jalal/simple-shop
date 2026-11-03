@@ -1,10 +1,5 @@
 import Link from "next/link";
-import {
-  FaArrowLeft,
-  FaTruck,
-  FaBoxOpen,
-  FaBox,
-} from "react-icons/fa";
+import { FaArrowLeft, FaTruck, FaBoxOpen, FaBox } from "react-icons/fa";
 import AddToCartButton from "@/components/AddToCartButton";
 
 export default async function ProductDetails({ params }) {
@@ -12,9 +7,7 @@ export default async function ProductDetails({ params }) {
   const { id } = await params;
 
   // Henter det valgte produkt fra DummyJSON API'et
-  const response = await fetch(
-    `https://dummyjson.com/products/${id}`,
-  );
+  const response = await fetch(`https://dummyjson.com/products/${id}`);
   const product = await response.json();
 
   return (
@@ -48,14 +41,17 @@ export default async function ProductDetails({ params }) {
           <p className="mt-4">{product.description}</p>
 
           {/* Produktpris */}
-          <p className="mt-6">{product.price} $</p>
+          <p className="mt-6">
+            {product.price.toLocaleString("da-DK", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}{" "}
+            kr.
+          </p>
 
           {/* Læg i kurv knap */}
           <div className="mt-6">
-            <AddToCartButton
-              product={product}
-              variant="text"
-            />
+            <AddToCartButton product={product} variant="text" />
           </div>
 
           {/* Information om levering, retur og indpakning */}
@@ -64,12 +60,8 @@ export default async function ProductDetails({ params }) {
             <div className="flex items-center gap-4">
               <FaTruck className="shrink-0 text-2xl" />
               <div>
-                <p className="font-semibold">
-                  Hurtig levering
-                </p>
-                <p className="text-sm">
-                  Levering inden for 1-3 hverdage
-                </p>
+                <p className="font-semibold">Hurtig levering</p>
+                <p className="text-sm">Levering inden for 1-3 hverdage</p>
               </div>
             </div>
 
@@ -77,12 +69,8 @@ export default async function ProductDetails({ params }) {
             <div className="flex items-center gap-4">
               <FaBoxOpen className="shrink-0 text-2xl" />
               <div>
-                <p className="font-semibold">
-                  30 dages returret
-                </p>
-                <p className="text-sm">
-                  Nem og fleksibel returnering
-                </p>
+                <p className="font-semibold">30 dages returret</p>
+                <p className="text-sm">Nem og fleksibel returnering</p>
               </div>
             </div>
           </div>
