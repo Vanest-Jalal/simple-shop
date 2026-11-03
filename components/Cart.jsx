@@ -30,7 +30,7 @@ export default function Cart({ onClose }) {
   }, 0);
 
   return (
-    <div className="absolute top-0 right-0 z-50 w-72 rounded-lg bg-background p-5 text-foreground shadow-lg border border-lightblue">
+    <div className="absolute top-0 right-0 z-50 w-96 rounded-lg bg-background p-5 text-foreground shadow-lg border border-lightblue">
       {/* Overskrift og luk-knap */}
       <div className="flex items-center justify-between mb-5">
         <h2>Indkøbskurv</h2>
@@ -52,8 +52,23 @@ export default function Cart({ onClose }) {
             key={product.id}
             className="border-b border-lightblue py-3"
           >
-            <p>{product.title}</p>
-            <p>{product.price} kr.</p>
+            {/* Viser produktbillede, navn og pris */}
+            <div className="flex items-center gap-3">
+              {/* Produktbillede */}
+              {product.thumbnail && (
+                <img
+                  src={product.thumbnail}
+                  alt={product.title}
+                  className="h-20 w-20 shrink-0 rounded-md object-contain"
+                />
+              )}
+
+              {/* Produktnavn og pris */}
+              <div>
+                <p>{product.title}</p>
+                <p>{product.price} kr.</p>
+              </div>
+            </div>
 
             {/* Knap til at mindske antallet af produktet */}
             <div className="mt-2 flex items-center gap-3">
