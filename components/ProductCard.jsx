@@ -15,7 +15,11 @@ export default function ProductCard({ product }) {
 
       <div className="mt-auto flex flex-col items-start gap-3">
         <p className="font-bold">
-          {product.price.toFixed(2).replace(".", ",")} kr.
+          {product.price.toLocaleString("da-DK", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}{" "}
+          kr.
         </p>
         <AddToCartButton product={product} />
       </div>
