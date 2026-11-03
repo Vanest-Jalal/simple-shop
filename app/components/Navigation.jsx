@@ -1,9 +1,8 @@
-
 "use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { IoCartOutline } from "react-icons/io5";
 import Cart from "../../components/Cart";
 
@@ -14,6 +13,11 @@ function NavigationContent() {
 
   // Holder styr på, om indkøbskurven er åben
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  // Lukker indkøbskurven, når brugeren skifter side
+  useEffect(() => {
+    setIsCartOpen(false);
+  }, [pathname]);
 
   const isProductsPage = pathname.startsWith("/products");
 
@@ -30,11 +34,12 @@ function NavigationContent() {
           }`}
         >
           Produkter
-
           {/* Blå understregning ved hover og aktiv side */}
           <span
             className={`absolute bottom-0 left-0 h-[2px] bg-blue transition-all duration-300 ${
-              isProductsPage ? "w-full" : "w-0 group-hover:w-full"
+              isProductsPage
+                ? "w-full"
+                : "w-0 group-hover:w-full"
             }`}
           />
         </Link>
