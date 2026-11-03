@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -5,39 +6,63 @@ import { usePathname } from "next/navigation";
 import { IoCartOutline } from "react-icons/io5";
 
 export default function Navigation() {
-  // Finder den side som brugeren er på
+  // Finder den aktuelle side
   const pathname = usePathname();
 
+  // Tjekker hvilken side der er aktiv
+  const isProductsPage = pathname.startsWith("/products");
+  const isCartPage = pathname === "/cart";
+
   return (
-    //Afstand mellem links
-    <nav className="flex items-center gap-6">
+    <nav className="flex items-center gap-8 font-medium">
+      {/* Link til produkter */}
       <Link
-      // Produktlink's og styling
         href="/products"
-        className={`text-lg font-normal leading-[1.6] transition-colors hover:text-lightblue ${
-          pathname.startsWith("/products")
-            ? "text-lightblue"
-            : "text-foreground"
+        className={`group relative pb-2 transition-colors duration-300 ${
+          isProductsPage
+            ? "text-blue"
+            : "text-foreground hover:text-blue"
         }`}
       >
-        produkter
+        Produkter
+
+        {/* Stregen animeres frem ved hover og bliver stående på produktsiden */}
+        <span
+          className={`absolute bottom-0 left-0 h-[2px] bg-blue transition-all duration-300 ${
+            isProductsPage ? "w-full" : "w-0 group-hover:w-full"
+          }`}
+        />
       </Link>
 
+      {/* Link til kurven */}
       <Link
         href="/cart"
-        aria-label="Gå til indkøbskurven"
-        className={`transition-colors hover:text-lightblue ${
-          pathname.startsWith("/cart")
-            ? "text-lightblue"
-            : "text-foreground"
+        aria-label="Gå til kurv"
+        className={`group relative flex items-center pb-2 transition-colors duration-300 ${
+          isCartPage
+            ? "text-blue"
+            : "text-foreground hover:text-blue"
         }`}
       >
-    
         <IoCartOutline size={28} />
+
+        {/* Stregen animeres frem ved hover og bliver stående på kurvesiden */}
+        <span
+          className={`absolute bottom-0 left-0 h-[2px] bg-blue transition-all duration-300 ${
+            isCartPage ? "w-full" : "w-0 group-hover:w-full"
+          }`}
+        />
       </Link>
     </nav>
   );
 }
+
+
+
+
+
+
+
 
 
 
