@@ -14,34 +14,53 @@ export default function Navigation() {
   const isCartPage = pathname === "/cart";
 
   return (
-    <nav className="flex items-center gap-8">
+    <nav className="flex items-center gap-8 font-medium">
       {/* Link til produkter */}
       <Link
         href="/products"
-        className={`transition-colors ${
+        className={`group relative pb-2 transition-colors duration-300 ${
           isProductsPage
-            ? "text-foreground underline underline-offset-8"
-            : "text-foreground hover:text-lightblue"
+            ? "text-blue"
+            : "text-foreground hover:text-blue"
         }`}
       >
         Produkter
+
+        {/* Stregen animeres frem ved hover og bliver stående på produktsiden */}
+        <span
+          className={`absolute bottom-0 left-0 h-[2px] bg-blue transition-all duration-300 ${
+            isProductsPage ? "w-full" : "w-0 group-hover:w-full"
+          }`}
+        />
       </Link>
 
       {/* Link til kurven */}
       <Link
         href="/cart"
         aria-label="Gå til kurv"
-        className={`flex items-center border-b-2 pb-1 transition-colors ${
+        className={`group relative flex items-center pb-2 transition-colors duration-300 ${
           isCartPage
-            ? "border-foreground text-foreground"
-            : "border-transparent text-foreground hover:text-lightblue"
+            ? "text-blue"
+            : "text-foreground hover:text-blue"
         }`}
       >
         <IoCartOutline size={28} />
+
+        {/* Stregen animeres frem ved hover og bliver stående på kurvesiden */}
+        <span
+          className={`absolute bottom-0 left-0 h-[2px] bg-blue transition-all duration-300 ${
+            isCartPage ? "w-full" : "w-0 group-hover:w-full"
+          }`}
+        />
       </Link>
     </nav>
   );
 }
+
+
+
+
+
 
 
 
