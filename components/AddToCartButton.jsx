@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Cart from "./Cart";
 import { useCartStore } from "../store/cartStore";
 import { IoCartOutline } from "react-icons/io5";
@@ -12,6 +13,14 @@ export default function AddToCartButton({
 }) {
   // Holder styr på om indkøbskurven er åben eller lukket
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  // Finder den aktuelle side
+  const pathname = usePathname();
+
+  // Lukker indkøbskurven, når brugeren skifter side
+  useEffect(() => {
+    setIsCartOpen(false);
+  }, [pathname]);
 
   // Henter addToCart funktionen fra vores Zustand store
   const addToCart = useCartStore(

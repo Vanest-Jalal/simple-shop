@@ -43,9 +43,23 @@ export default function PaymentPage() {
               key={product.id}
               className="flex justify-between border-b border-lightblue py-4"
             >
-              <div>
-                <h3>{product.title}</h3>
-                <p>Antal: {product.quantity}</p>
+                
+              {/* Viser produktbillede, navn og antal */}
+              <div className="flex items-center gap-4">
+                {/* Produktbillede */}
+                {product.thumbnail && (
+                  <img
+                    src={product.thumbnail}
+                    alt={product.title}
+                    className="h-20 w-20 shrink-0 rounded-md object-contain"
+                  />
+                )}
+
+                {/* Produktnavn og antal */}
+                <div>
+                  <h3>{product.title}</h3>
+                  <p>Antal: {product.quantity}</p>
+                </div>
               </div>
 
               <p>
