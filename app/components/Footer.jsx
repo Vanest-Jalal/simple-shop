@@ -22,8 +22,8 @@ export default function Footer() {
             <div className="mt-5">
               {/* Tekst over ikonerne */}
              <p className="mb-2 !text-lg !font-semibold text-white">
-  Følg os på
-</p>
+                 Følg os på
+                 </p>
 
               {/* fake sociale medier ikoner */}
               <div className="flex items-center gap-3">
